@@ -15,9 +15,9 @@ export default function Home() {
 
       {/* <Question>
         <Cloze />
-      </Question> */}
+      </Question>
 
-      {/* <Question>
+      <Question>
         <Categorize />
       </Question> */}
     </div>

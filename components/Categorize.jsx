@@ -1,8 +1,13 @@
+import { BsGrid } from "react-icons/bs";
 import Mcq from "./Mcq";
+
 const Categorize = (props) => {
   return (
     <div className=" px-4 py-2 ">
-      <div className="text-xs mb-2">Question 1</div>
+      <div className="flex gap-2">
+        <BsGrid />
+        <div className="text-xs mb-2">Question 1</div>
+      </div>
       <select
         className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
         name="questions_types"
@@ -28,7 +33,7 @@ const Categorize = (props) => {
           name="ques"
           placeholder="Option 1"
         />
-        <div className="text-lg ml-6 self-center">X</div>
+        <div className="text-lg ml-6 self-center cursor-pointer">X</div>
       </div>
       <div className="flex align-center mb-2">
         <input
@@ -37,7 +42,7 @@ const Categorize = (props) => {
           name="ques"
           placeholder="Option 1"
         />
-        <div className="text-lg ml-6 self-center">X</div>
+        <div className="text-lg ml-6 self-center cursor-pointer">X</div>
       </div>
       <div className="flex justify-between">
         <div className="text-xs">Item</div>
@@ -51,7 +56,7 @@ const Categorize = (props) => {
             name="ques"
             placeholder="Option 1"
           />
-          <div className="text-lg ml-6 self-center">X</div>
+          <div className="text-lg ml-6 self-center cursor-pointer">X</div>
         </div>
         <select
           className="max-w-[160px] bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
@@ -72,7 +77,7 @@ const Categorize = (props) => {
             name="ques"
             placeholder="Option 1"
           />
-          <div className="text-lg ml-6 self-center">X</div>
+          <div className="text-lg ml-6 self-center cursor-pointer">X</div>
         </div>
         <select
           className="max-w-[160px] bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
@@ -93,7 +98,7 @@ const Categorize = (props) => {
             name="ques"
             placeholder="Option 1"
           />
-          <div className="text-lg ml-6 self-center">X</div>
+          <div className="text-lg ml-6 self-center cursor-pointer">X</div>
         </div>
         <select
           className="max-w-[160px] bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"

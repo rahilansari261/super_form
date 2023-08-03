@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { BsGrid } from "react-icons/bs";
 const answersArr = [
   {
     id: "1",
@@ -24,7 +25,10 @@ const Mcq = (props) => {
   }
   return (
     <div className={` px-4 py-2 mb-2 ${props.customStyle}`}>
-      <div className="text-xs mb-2">Question 1</div>
+      <div className="flex gap-2">
+        <BsGrid />
+        <div className="text-xs mb-2">Question 1</div>
+      </div>
       <select
         className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
         name="questions_types"
@@ -49,11 +53,12 @@ const Mcq = (props) => {
                   <Draggable key={id} draggableId={id} index={index}>
                     {(provided) => (
                       <div
-                        className="flex align-center mb-2"
+                        className="flex align-center mb-2 gap-2 align-center"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
+                        <BsGrid className="self-center" />
                         <input
                           className="mr-4"
                           type="radio"
@@ -67,7 +72,9 @@ const Mcq = (props) => {
                           name="ques"
                           placeholder={`Option ${id} (Optional)`}
                         />
-                        <div className="text-lg ml-6 self-center">X</div>
+                        <div className="text-lg ml-6 self-center cursor-pointer">
+                          X
+                        </div>
                       </div>
                     )}
                   </Draggable>

@@ -1,8 +1,12 @@
 import Mcq from "./Mcq";
+import { BsGrid } from "react-icons/bs";
 const Cloze = (props) => {
   return (
     <div className=" px-4 py-2 ">
-      <div className="text-xs mb-2">Question 1</div>
+      <div className="flex gap-2">
+        <BsGrid />
+        <div className="text-xs mb-2">Question 1</div>
+      </div>
       <select
         className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
         name="questions_types"
@@ -47,7 +51,7 @@ const Cloze = (props) => {
           name="ques"
           placeholder="Option 1"
         />
-        <div className="text-lg ml-6 self-center">X</div>
+        <div className="text-lg ml-6 self-center cursor-pointer">X</div>
       </div>
       <div className="flex align-center mb-2">
         <input
@@ -63,7 +67,8 @@ const Cloze = (props) => {
           name="ques"
           placeholder="Option 2"
         />
-        <div className="text-lg ml-6 self-center">X</div>
+
+        <div className="text-lg ml-6 self-center cursor-pointer">X</div>
       </div>
     </div>
   );
