@@ -9,17 +9,17 @@ export default function Home() {
   const mcqStyle = `rounded border border-gray-300`;
   return (
     <div>
-      {/* <Question>
+      <Question>
         <Comprehension quiz={questionArray} mcqStyle={mcqStyle} />
       </Question>
 
-      <Question>
+      {/* <Question>
         <Cloze />
       </Question> */}
 
-      <Question>
+      {/* <Question>
         <Categorize />
-      </Question>
+      </Question> */}
     </div>
   );
 }
