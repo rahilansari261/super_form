@@ -13,13 +13,13 @@ export default function Home() {
         <Comprehension quiz={questionArray} mcqStyle={mcqStyle} />
       </Question>
 
-      {/* <Question>
+       <Question>
         <Cloze />
       </Question>
 
       <Question>
         <Categorize />
-      </Question> */}
+      </Question> 
     </div>
   );
 }
