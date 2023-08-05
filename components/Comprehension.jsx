@@ -10,8 +10,8 @@ const Comprehension = (props) => {
         rows="5"
         placeholder="Type passage here"
       ></textarea>
-      {props.quiz.map((item) => (
-        <Mcq customStyle={props.mcqStyle} />
+      {props.quiz.map((item, index) => (
+        <Mcq key={index} customStyle={props.mcqStyle} />
       ))}
     </div>
   );
