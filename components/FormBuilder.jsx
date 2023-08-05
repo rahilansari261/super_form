@@ -17,36 +17,36 @@ const FormBuilder = () => {
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {/* {answers.map(({ id }, index) => {
                 return ( */}
-            <Draggable key={1} draggableId={"1"} index={0}>
+            <Draggable key={1} draggableId={"category"} index={0}>
               {(provided) => (
                 <Question
                   ref={provided.innerRef}
                   {...provided.draggableProps}
-                  {...provided.dragHandleProps}
+                  dragHandle={provided.dragHandleProps}
                 >
                   <Categorize />
                 </Question>
               )}
             </Draggable>
 
-            <Draggable key={2} draggableId={"2"} index={1}>
+            <Draggable key={2} draggableId={"cloze"} index={1}>
               {(provided) => (
                 <Question
                   ref={provided.innerRef}
                   {...provided.draggableProps}
-                  {...provided.dragHandleProps}
+                  dragHandle={provided.dragHandleProps}
                 >
                   <Cloze />
                 </Question>
               )}
             </Draggable>
 
-            <Draggable key={3} draggableId={"3"} index={2}>
+            <Draggable key={3} draggableId={"comprehension"} index={2}>
               {(provided) => (
                 <Question
                   ref={provided.innerRef}
                   {...provided.draggableProps}
-                  {...provided.dragHandleProps}
+                  dragHandle={provided.dragHandleProps}
                 >
                   <Comprehension quiz={questionArray} mcqStyle={mcqStyle} />
                 </Question>
