@@ -10,12 +10,20 @@ import { BsGrid } from "react-icons/bs";
 import { useState } from "react";
 
 const FormBuilder = () => {
-  const questionArray = [
-    { id: "1", ques: <Categorize /> },
-    { id: "2", ques: <Cloze /> },
+  const allQuestions = [
+    // {
+    //   id: "2",
+    //   questionType: "Comprehension",
+    //   questionComponent: <Comprehension mcqs={[{ id: "1" }]} />,
+    // },
+    {
+      id: "1",
+      questionType: "Mcq",
+      questionComponent: <Mcq />,
+    },
   ];
 
-  const [questions, setQuestions] = useState(questionArray);
+  const [questions, setQuestions] = useState(allQuestions);
   function handleOnDragEnd(result) {
     if (!result.destination) return;
     const items = Array.from(questions);
@@ -24,13 +32,12 @@ const FormBuilder = () => {
     setQuestions(items);
   }
 
-  const mcqStyle = `rounded border border-gray-300`;
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <Droppable droppableId="form">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
-            {questions.map(({ id, ques }, index) => {
+            {questions.map(({ id, questionType, questionComponent }, index) => {
               return (
                 <Draggable
                   key={id}
@@ -61,7 +68,7 @@ const FormBuilder = () => {
                         <option value="cloze">Cloze</option>
                         <option value="categorize">Categorize</option>
                       </select>
-                      {ques}
+                      {questionComponent}
                     </div>
                   )}
                 </Draggable>

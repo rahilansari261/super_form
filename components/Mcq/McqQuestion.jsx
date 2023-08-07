@@ -19,6 +19,7 @@ const Mcq = (props) => {
     items.splice(result.destination.index, 0, reorderedItem);
     setMcq(items);
   }
+  const borderAroundStyle = `rounded border border-gray-300`;
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -30,23 +31,32 @@ const Mcq = (props) => {
                 <Draggable key={id} draggableId={id} index={index}>
                   {(provided) => (
                     <div
-                      className={` px-4 py-2 mb-2 ${props.customStyle}`}
+                      className={` px-4 py-2 mb-2 ${
+                        props.inComprehension ? borderAroundStyle : `px-0 py-0`
+                      }`}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                     >
-                      <div className="flex ">
-                        <div className="p-2" {...provided.dragHandleProps}>
-                          <BsGrid className="self-center" />
+                      {props.inComprehension && (
+                        <div>
+                          <div className="flex ">
+                            <div className="p-2" {...provided.dragHandleProps}>
+                              <BsGrid className="self-center" />
+                            </div>
+                            <div className="text-xs self-center">
+                              Question {id}
+                            </div>
+                          </div>
+                          <select
+                            className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
+                            name="questions_types"
+                            id="questions-type-select"
+                          >
+                            <option value="mcq">MCQ</option>
+                          </select>
                         </div>
-                        <div className="text-xs self-center">Question {id}</div>
-                      </div>
-                      <select
-                        className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
-                        name="questions_types"
-                        id="questions-type-select"
-                      >
-                        <option value="mcq">MCQ</option>
-                      </select>
+                      )}
+
                       <input
                         className="w-full bg-white p-1 rounded border border-gray-300 outline-none text-xs mb-2"
                         id="ques"
