@@ -42,13 +42,14 @@ const FormBuilder = () => {
                       className="rounded border border-gray-300 border-l-4 border-l-indigo-300 m-4 px-4 py-2 "
                       ref={provided.innerRef}
                       {...provided.draggableProps}
-                      {...provided.dragHandleProps}
                     >
                       <div className="flex ">
-                        <div className="p-2">
+                        <div className="p-2" {...provided.dragHandleProps}>
                           <BsGrid className="self-center" />
                         </div>
-                        <div className="text-xs self-center">Question {id}</div>
+                        <div className="text-xs self-center">
+                          Question {index + 1}
+                        </div>
                       </div>
                       <select
                         className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
