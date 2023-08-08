@@ -56,7 +56,9 @@ const FormBuilder = () => {
                 >
                   {(provided) => (
                     <div
-                      className="rounded border border-gray-300 border-l-4 border-l-indigo-300 m-4 px-4 py-2 "
+                      className={`rounded border border-gray-300 border-l-4 border-l-indigo-300 m-4 px-4 py-2 ${
+                        index === questions.length - 1 ? "mb-24" : ""
+                      } `}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                     >
