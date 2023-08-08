@@ -19,7 +19,7 @@ const Mcq = (props) => {
     items.splice(result.destination.index, 0, reorderedItem);
     setMcq(items);
   }
-  const borderAroundStyle = `rounded border border-gray-300`;
+  const borderAroundStyle = `px-4 py-2 rounded border border-gray-300`;
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -31,8 +31,8 @@ const Mcq = (props) => {
                 <Draggable key={id} draggableId={id} index={index}>
                   {(provided) => (
                     <div
-                      className={` px-4 py-2 mb-2 ${
-                        props.inComprehension ? borderAroundStyle : `px-0 py-0`
+                      className={` mb-2 ${
+                        props.inComprehension ? borderAroundStyle : ``
                       }`}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
