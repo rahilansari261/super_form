@@ -27,11 +27,11 @@ const questionSlice = createSlice({
       state.push({ id, questionType, questionComponent });
     },
     updateQuestion: (state, action) => {
-      const { id, title, description } = action.payload;
-      const postIndex = state.findIndex((post) => post.id === id);
-      if (postIndex !== -1) {
-        state[postIndex].title = title;
-        state[postIndex].description = description;
+      const { id, questionType, questionComponent } = action.payload;
+      const questionIndex = state.findIndex((question) => question.id === id);
+      if (questionIndex !== -1) {
+        state[questionIndex].questionType = questionType;
+        state[questionIndex].questionComponent = questionComponent;
       }
     },
     deleteQuestion: (state, action) => {

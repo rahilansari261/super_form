@@ -9,7 +9,8 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { BsGrid } from "react-icons/bs";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { reArrangeQuestions } from "@/redux/reducers/slice";
+import { reArrangeQuestions, updateQuestion } from "@/redux/reducers/slice";
+import { ComponentArray } from "@/util/constant";
 const FormBuilder = () => {
   const questions = useSelector((state) => state.questions);
   const dispatch = useDispatch();
@@ -20,6 +21,15 @@ const FormBuilder = () => {
     items.splice(result.destination.index, 0, reorderedItem);
     dispatch(reArrangeQuestions(items));
   }
+  const handleQuestionTypeChange = (e, id) => {
+    const questionType = e.target.value;
+    const updatedQuestion = {
+      id,
+      questionType,
+      questionComponent: ComponentArray[questionType],
+    };
+    dispatch(updateQuestion(updatedQuestion));
+  };
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -53,6 +63,7 @@ const FormBuilder = () => {
                         className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
                         name="questions_types"
                         id="questions-type-select"
+                        onChange={() => handleQuestionTypeChange(event, id)}
                       >
                         <option value="mcq">MCQ</option>
                         <option value="comprehension">Comprehension</option>
