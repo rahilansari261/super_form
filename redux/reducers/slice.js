@@ -6,24 +6,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = [
   {
-    id: "11",
+    id: "1",
     questionType: "Mcq",
     questionComponent: <Mcq />,
-  },
-  {
-    id: "21",
-    questionType: "Comprehension",
-    questionComponent: <Comprehension mcqs={[{ id: "1" }]} />,
-  },
-  {
-    id: "31",
-    questionType: "Cloze",
-    questionComponent: <Cloze />,
-  },
-  {
-    id: "41",
-    questionType: "Categorize",
-    questionComponent: <Categorize />,
   },
 ];
 
@@ -31,15 +16,15 @@ const questionSlice = createSlice({
   name: "questions",
   initialState: initialState,
   reducers: {
-    arrangeQuestions: (state, action) => {
+    reArrangeQuestions: (state, action) => {
       return action.payload;
     },
     addQuestions: (state, action) => {
       state.push(...action.payload);
     },
     addQuestion: (state, action) => {
-      const { id, title, description } = action.payload;
-      state.push({ id, title, description });
+      const { id, questionType, questionComponent } = action.payload;
+      state.push({ id, questionType, questionComponent });
     },
     updateQuestion: (state, action) => {
       const { id, title, description } = action.payload;
@@ -57,7 +42,7 @@ const questionSlice = createSlice({
 });
 
 export const {
-  arrangeQuestions,
+  reArrangeQuestions,
   addQuestions,
   addQuestion,
   updateQuestion,

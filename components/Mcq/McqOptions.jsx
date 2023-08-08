@@ -27,12 +27,16 @@ const McqOptions = (props) => {
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="answers">
+      <Droppable droppableId="options">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {answers.map(({ id }, index) => {
               return (
-                <Draggable key={id} draggableId={id} index={index}>
+                <Draggable
+                  key={`option-${id}`}
+                  draggableId={`option-${id}`}
+                  index={index}
+                >
                   {(provided) => (
                     <div
                       className="flex align-center mb-2 gap-2 align-center"

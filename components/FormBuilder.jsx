@@ -9,7 +9,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { BsGrid } from "react-icons/bs";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { arrangeQuestions } from "@/redux/reducers/slice";
+import { reArrangeQuestions } from "@/redux/reducers/slice";
 const FormBuilder = () => {
   const questions = useSelector((state) => state.questions);
   const dispatch = useDispatch();
@@ -18,19 +18,19 @@ const FormBuilder = () => {
     const items = Array.from(questions);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-    dispatch(arrangeQuestions(items));
+    dispatch(reArrangeQuestions(items));
   }
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="form">
+      <Droppable droppableId="answers">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {questions.map(({ id, questionType, questionComponent }, index) => {
               return (
                 <Draggable
-                  key={id}
-                  draggableId={`draggable-${id}`}
+                  key={`answer-${id}`}
+                  draggableId={`answer-${id}`}
                   index={index}
                 >
                   {(provided) => (

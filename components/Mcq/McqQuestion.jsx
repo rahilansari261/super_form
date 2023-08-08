@@ -23,12 +23,16 @@ const Mcq = (props) => {
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="mcq">
+      <Droppable droppableId="mcqs">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {mcqs.map(({ id }, index) => {
               return (
-                <Draggable key={id} draggableId={id} index={index}>
+                <Draggable
+                  key={`mcq-${id}`}
+                  draggableId={`mcq-${id}`}
+                  index={index}
+                >
                   {(provided) => (
                     <div
                       className={` mb-2 ${

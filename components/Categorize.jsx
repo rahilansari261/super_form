@@ -25,7 +25,7 @@ const Categorize = (props) => {
     setAnswers(items);
   }
   return (
-    <div className="  ">
+    <div className="">
       <input
         className="w-full bg-white p-1 rounded border border-gray-300 outline-none text-xs mb-2"
         id="ques"
