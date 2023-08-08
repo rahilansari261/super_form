@@ -8,38 +8,17 @@ import Categorize from "@/components/Categorize";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { BsGrid } from "react-icons/bs";
 import { useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { arrangeQuestions } from "@/redux/reducers/slice";
 const FormBuilder = () => {
-  const allQuestions = [
-    {
-      id: "1",
-      questionType: "Mcq",
-      questionComponent: <Mcq />,
-    },
-    {
-      id: "2",
-      questionType: "Comprehension",
-      questionComponent: <Comprehension mcqs={[{ id: "1" }]} />,
-    },
-    {
-      id: "3",
-      questionType: "Cloze",
-      questionComponent: <Cloze />,
-    },
-    {
-      id: "4",
-      questionType: "Categorize",
-      questionComponent: <Categorize />,
-    },
-  ];
-
-  const [questions, setQuestions] = useState(allQuestions);
+  const questions = useSelector((state) => state.questions);
+  const dispatch = useDispatch();
   function handleOnDragEnd(result) {
     if (!result.destination) return;
     const items = Array.from(questions);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-    setQuestions(items);
+    dispatch(arrangeQuestions(items));
   }
 
   return (

@@ -1,23 +1,47 @@
+import Categorize from "@/components/Categorize";
+import Cloze from "@/components/Cloze";
+import Comprehension from "@/components/Comprehension";
+import Mcq from "@/components/Mcq/McqQuestion";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = [
-  { id: 1, title: "Post 1", description: "Description of Post 1" },
-  { id: 2, title: "Post 2", description: "Description of Post 2" },
-  { id: 3, title: "Post 3", description: "Description of Post 3" },
+  {
+    id: "11",
+    questionType: "Mcq",
+    questionComponent: <Mcq />,
+  },
+  {
+    id: "21",
+    questionType: "Comprehension",
+    questionComponent: <Comprehension mcqs={[{ id: "1" }]} />,
+  },
+  {
+    id: "31",
+    questionType: "Cloze",
+    questionComponent: <Cloze />,
+  },
+  {
+    id: "41",
+    questionType: "Categorize",
+    questionComponent: <Categorize />,
+  },
 ];
 
-const postsSlice = createSlice({
-  name: "posts",
+const questionSlice = createSlice({
+  name: "questions",
   initialState: initialState,
   reducers: {
-    addPosts: (state, action) => {
+    arrangeQuestions: (state, action) => {
+      return action.payload;
+    },
+    addQuestions: (state, action) => {
       state.push(...action.payload);
     },
-    addPost: (state, action) => {
+    addQuestion: (state, action) => {
       const { id, title, description } = action.payload;
       state.push({ id, title, description });
     },
-    updatePost: (state, action) => {
+    updateQuestion: (state, action) => {
       const { id, title, description } = action.payload;
       const postIndex = state.findIndex((post) => post.id === id);
       if (postIndex !== -1) {
@@ -25,12 +49,18 @@ const postsSlice = createSlice({
         state[postIndex].description = description;
       }
     },
-    deletePost: (state, action) => {
+    deleteQuestion: (state, action) => {
       const postId = action.payload;
       return state.filter((post) => post.id !== postId);
     },
   },
 });
 
-export const { addPosts, addPost, updatePost, deletePost } = postsSlice.actions;
-export default postsSlice.reducer;
+export const {
+  arrangeQuestions,
+  addQuestions,
+  addQuestion,
+  updateQuestion,
+  deleteQuestion,
+} = questionSlice.actions;
+export default questionSlice.reducer;
