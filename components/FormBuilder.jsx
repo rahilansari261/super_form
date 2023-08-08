@@ -12,14 +12,14 @@ import { useState } from "react";
 const FormBuilder = () => {
   const allQuestions = [
     {
-      id: "2",
-      questionType: "Comprehension",
-      questionComponent: <Comprehension mcqs={[{ id: "1" }]} />,
-    },
-    {
       id: "1",
       questionType: "Mcq",
       questionComponent: <Mcq />,
+    },
+    {
+      id: "2",
+      questionType: "Comprehension",
+      questionComponent: <Comprehension mcqs={[{ id: "1" }]} />,
     },
     {
       id: "3",

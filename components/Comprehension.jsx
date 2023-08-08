@@ -2,7 +2,7 @@ import Mcq from "./Mcq/McqQuestion";
 import { BsGrid } from "react-icons/bs";
 const Comprehension = (props) => {
   return (
-    <div className="  ">
+    <div className="">
       <textarea
         className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs resize-none mb-2"
         id="passage"
@@ -11,7 +11,7 @@ const Comprehension = (props) => {
         placeholder="Type passage here"
       ></textarea>
       {props.mcqs.map((item, index) => (
-        <Mcq key={index} inComprehension={true}/>
+        <Mcq key={index} inComprehension={true} />
       ))}
     </div>
   );
