@@ -10,7 +10,8 @@ import { BsGrid } from "react-icons/bs";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { reArrangeQuestions, updateQuestion } from "@/redux/reducers/slice";
-import { ComponentArray } from "@/util/constant";
+import  ComponentArray  from "@/util/constant";
+
 const FormBuilder = () => {
   const questions = useSelector((state) => state.questions);
   const dispatch = useDispatch();

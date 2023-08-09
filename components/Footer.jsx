@@ -9,7 +9,7 @@ const Footer = () => {
     const id = (questions.length + 1).toString();
     const defaultMcqQuestion = {
       id,
-      questionType: "Mcq",
+      questionType: "mcq",
       questionComponent: <Mcq />,
     };
     dispatch(addQuestion(defaultMcqQuestion));

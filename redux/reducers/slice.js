@@ -7,7 +7,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = [
   {
     id: "1",
-    questionType: "Mcq",
+    questionType: "mcq",
     questionComponent: <Mcq />,
   },
 ];
@@ -23,8 +23,14 @@ const questionSlice = createSlice({
       state.push(...action.payload);
     },
     addQuestion: (state, action) => {
-      const { id, questionType, questionComponent } = action.payload;
-      state.push({ id, questionType, questionComponent });
+      console.log(action)
+      // const { id, questionType, questionComponent } = action.payload;
+      // state.push({ id, questionType, questionComponent });
+    },
+    duplicateQuestion: (state, action) => {
+      console.log(action)
+      // const { id, questionType, questionComponent } = action.payload;
+      // state.push({ id, questionType, questionComponent });
     },
     updateQuestion: (state, action) => {
       const { id, questionType, questionComponent } = action.payload;
@@ -45,6 +51,7 @@ export const {
   reArrangeQuestions,
   addQuestions,
   addQuestion,
+  duplicateQuestion,
   updateQuestion,
   deleteQuestion,
 } = questionSlice.actions;

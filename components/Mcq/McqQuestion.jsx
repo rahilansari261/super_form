@@ -3,6 +3,7 @@ import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { BsGrid } from "react-icons/bs";
 import McqOptions from "./McqOptions";
+import { QuestionSetting } from "../QuestionSetting";
 
 const mcqArr = [
   {
@@ -68,6 +69,7 @@ const Mcq = (props) => {
                         placeholder="Question Text"
                       />
                       <McqOptions />
+                      <QuestionSetting questionType="mcq" />
                     </div>
                   )}
                 </Draggable>
