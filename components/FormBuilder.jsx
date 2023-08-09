@@ -7,10 +7,9 @@ import Cloze from "@/components/Cloze";
 import Categorize from "@/components/Categorize";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { BsGrid } from "react-icons/bs";
-import { useState } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { reArrangeQuestions, updateQuestion } from "@/redux/reducers/slice";
-import  ComponentArray  from "@/util/constant";
 
 const FormBuilder = () => {
   const questions = useSelector((state) => state.questions);
@@ -27,8 +26,11 @@ const FormBuilder = () => {
     const updatedQuestion = {
       id,
       questionType,
-      questionComponent: ComponentArray[questionType],
     };
+    questionType === "comprehension"
+      ? (updatedQuestion.mcqs = [{ id: "1" }])
+      : null;
+
     dispatch(updateQuestion(updatedQuestion));
   };
 
@@ -37,11 +39,11 @@ const FormBuilder = () => {
       <Droppable droppableId="answers">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
-            {questions.map(({ id, questionType, questionComponent }, index) => {
+            {questions.map((question, index) => {
               return (
                 <Draggable
-                  key={`answer-${id}`}
-                  draggableId={`answer-${id}`}
+                  key={`answer-${question.id}`}
+                  draggableId={`answer-${question.id}`}
                   index={index}
                 >
                   {(provided) => (
@@ -64,14 +66,16 @@ const FormBuilder = () => {
                         className="w-full bg-white p-2 rounded border border-gray-300 outline-none text-xs mb-2"
                         name="questions_types"
                         id="questions-type-select"
-                        onChange={() => handleQuestionTypeChange(event, id)}
+                        onChange={() =>
+                          handleQuestionTypeChange(event, question.id)
+                        }
                       >
                         <option value="mcq">MCQ</option>
                         <option value="comprehension">Comprehension</option>
                         <option value="cloze">Cloze</option>
                         <option value="categorize">Categorize</option>
                       </select>
-                      {questionComponent}
+                      <Question question={question} />
                     </div>
                   )}
                 </Draggable>

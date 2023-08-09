@@ -69,7 +69,7 @@ const Mcq = (props) => {
                         placeholder="Question Text"
                       />
                       <McqOptions />
-                      <QuestionSetting questionType="mcq" />
+                      <QuestionSetting question={props.quest} />
                     </div>
                   )}
                 </Draggable>

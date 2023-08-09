@@ -10,7 +10,6 @@ const Footer = () => {
     const defaultMcqQuestion = {
       id,
       questionType: "mcq",
-      questionComponent: <Mcq />,
     };
     dispatch(addQuestion(defaultMcqQuestion));
   };

@@ -1,32 +1,30 @@
 "use client";
 import { MdAddCircle, MdContentCopy, MdDelete } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
-import { addQuestion, reArrangeQuestions } from "@/redux/reducers/slice";
+import {
+  addQuestion,
+  duplicateQuestion,
+  reArrangeQuestions,
+} from "@/redux/reducers/slice";
 import Mcq from "./Mcq/McqQuestion";
-import  ComponentArray  from "@/util/constant";
 export const QuestionSetting = (props) => {
+  console.log(props);
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
   const addQuestionInFormBuilder = () => {
-    const id = (questions.length + 1).toString();
+    const id = questions.length + 1;
     const defaultMcqQuestion = {
       id,
       questionType: "mcq",
-      questionComponent: <Mcq />,
     };
     dispatch(addQuestion(defaultMcqQuestion));
   };
+  // TODO -> pass whole question object to duplicateQuestion() func.
   const addDuplicateQuestionInFormBuilder = () => {
-    const id = (questions.length + 1).toString();
-
-    console.log(ComponentArray[props.questionType]);
-    const addDuplicateQuestion = {
-      id,
-      questionType: props.questionType,
-      questionComponent: ComponentArray[props.questionType],
-    };
-    dispatch(addQuestion(addDuplicateQuestion));
+    // const addDuplicateQuestion = from props
+    dispatch(duplicateQuestion(props.question));
   };
+
   return (
     <div className="flex px-4 py-2 justify-between align-center">
       <MdAddCircle

@@ -1,5 +1,7 @@
 import Mcq from "./Mcq/McqQuestion";
 import { BsGrid } from "react-icons/bs";
+import { QuestionSetting } from "./QuestionSetting";
+
 const Comprehension = (props) => {
   return (
     <div className="">
@@ -10,9 +12,10 @@ const Comprehension = (props) => {
         rows="5"
         placeholder="Type passage here"
       ></textarea>
-      {props.mcqs.map((item, index) => (
+      {props.quest.mcqs.map((item, index) => (
         <Mcq key={index} inComprehension={true} />
       ))}
+      <QuestionSetting question={props.quest} />
     </div>
   );
 };

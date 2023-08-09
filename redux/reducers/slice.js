@@ -6,9 +6,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = [
   {
-    id: "1",
+    id: 1,
     questionType: "mcq",
-    questionComponent: <Mcq />,
   },
 ];
 
@@ -23,23 +22,28 @@ const questionSlice = createSlice({
       state.push(...action.payload);
     },
     addQuestion: (state, action) => {
-      console.log(action)
-      // const { id, questionType, questionComponent } = action.payload;
-      // state.push({ id, questionType, questionComponent });
+      const { id, questionType } = action.payload;
+      state.push({ id, questionType });
     },
     duplicateQuestion: (state, action) => {
-      console.log(action)
-      // const { id, questionType, questionComponent } = action.payload;
-      // state.push({ id, questionType, questionComponent });
+      const { id } = action.payload;
+      const desiredIndex = id;
+      const questionId = id + 1;
+      state.splice(desiredIndex, 0, { ...action.payload, id: questionId });
     },
+
     updateQuestion: (state, action) => {
-      const { id, questionType, questionComponent } = action.payload;
+      const { id, questionType, mcqs } = action.payload;
       const questionIndex = state.findIndex((question) => question.id === id);
       if (questionIndex !== -1) {
-        state[questionIndex].questionType = questionType;
-        state[questionIndex].questionComponent = questionComponent;
+        const updatedQuestion = { ...state[questionIndex], questionType };
+        if (questionType === "comprehension" && mcqs !== undefined) {
+          updatedQuestion.mcqs = mcqs;
+        }
+        state[questionIndex] = updatedQuestion;
       }
     },
+
     deleteQuestion: (state, action) => {
       const postId = action.payload;
       return state.filter((post) => post.id !== postId);
