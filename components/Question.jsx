@@ -4,7 +4,6 @@ import Comprehension from "./Comprehension";
 import Mcq from "./Mcq/McqQuestion";
 
 const Question = (props) => {
-  console.log(props);
   const componentObj = {
     mcq: <Mcq quest={props.question} />,
     comprehension: <Comprehension quest={props.question} />,

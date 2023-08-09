@@ -1,5 +1,6 @@
 import Mcq from "./Mcq/McqQuestion";
 import { BsGrid } from "react-icons/bs";
+import { QuestionSetting } from "./QuestionSetting";
 const Cloze = (props) => {
   return (
     <div className=" ">
@@ -56,6 +57,7 @@ const Cloze = (props) => {
 
         <div className="text-lg ml-6 self-center cursor-pointer">X</div>
       </div>
+      <QuestionSetting question={props.quest} />
     </div>
   );
 };

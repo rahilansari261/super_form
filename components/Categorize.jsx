@@ -3,6 +3,7 @@ import { BsGrid } from "react-icons/bs";
 import Mcq from "./Mcq/McqQuestion";
 import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { QuestionSetting } from "./QuestionSetting";
 const answersArr = [
   {
     id: "1",
@@ -110,6 +111,7 @@ const Categorize = (props) => {
                           <option value="cloze">Cloze</option>
                           <option value="categorize">Categorize</option>
                         </select>
+                        <QuestionSetting question={props.quest} />
                       </div>
                     )}
                   </Draggable>

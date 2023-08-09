@@ -7,8 +7,7 @@ import {
   reArrangeQuestions,
 } from "@/redux/reducers/slice";
 import Mcq from "./Mcq/McqQuestion";
-export const QuestionSetting = (props) => {
-  console.log(props);
+export const QuestionSetting = (props) => {  
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
   const addQuestionInFormBuilder = () => {
