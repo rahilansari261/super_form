@@ -69,6 +69,7 @@ const FormBuilder = () => {
                         onChange={() =>
                           handleQuestionTypeChange(event, question.id)
                         }
+                        value={question.questionType}
                       >
                         <option value="mcq">MCQ</option>
                         <option value="comprehension">Comprehension</option>
