@@ -27,10 +27,7 @@ const FormBuilder = () => {
       id,
       questionType,
     };
-    questionType === "comprehension"
-      ? (updatedQuestion.mcqs = [{ id: "1" }])
-      : null;
-
+   
     dispatch(updateQuestion(updatedQuestion));
   };
 

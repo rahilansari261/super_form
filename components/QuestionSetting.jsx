@@ -8,13 +8,13 @@ import {
   reArrangeQuestions,
 } from "@/redux/reducers/slice";
 import Mcq from "./Mcq/McqQuestion";
+import { v4 as uuidv4 } from "uuid";
 export const QuestionSetting = (props) => {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
   const addQuestionInFormBuilder = () => {
-    const id = questions.length + 1;
     const defaultMcqQuestion = {
-      id,
+      id: uuidv4,
       questionType: "mcq",
     };
     dispatch(addQuestion(defaultMcqQuestion));

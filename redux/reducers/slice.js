@@ -3,10 +3,11 @@ import Cloze from "@/components/Cloze";
 import Comprehension from "@/components/Comprehension";
 import Mcq from "@/components/Mcq/McqQuestion";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = [
   {
-    id: 1,
+    id: uuidv4(),
     questionType: "mcq",
   },
 ];
@@ -27,20 +28,21 @@ const questionSlice = createSlice({
     },
     duplicateQuestion: (state, action) => {
       const { id } = action.payload;
-      const desiredIndex = id;
-      const questionId = id + 1;
+      const desiredIndex = state.findIndex((question) => question.id === id);
+
+      const questionId = uuidv4();
       state.splice(desiredIndex, 0, { ...action.payload, id: questionId });
     },
 
     updateQuestion: (state, action) => {
-      const { id, questionType, mcqs } = action.payload;
-      const questionIndex = state.findIndex((question) => question.id === id);
-      if (questionIndex !== -1) {
-        const updatedQuestion = { ...state[questionIndex], questionType };
-        if (questionType === "comprehension" && mcqs !== undefined) {
-          updatedQuestion.mcqs = mcqs;
+      const { id, questionType } = action.payload;
+      const desiredIndex = state.findIndex((question) => question.id === id);
+      if (desiredIndex !== -1) {
+        const updatedQuestion = { id, questionType };
+        if (questionType === "comprehension") {
+          updatedQuestion.mcqs = [{ id: uuidv4() }];
         }
-        state[questionIndex] = updatedQuestion;
+        state[desiredIndex] = updatedQuestion;
       }
     },
 

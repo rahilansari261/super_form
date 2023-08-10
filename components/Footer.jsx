@@ -2,13 +2,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addQuestion, reArrangeQuestions } from "@/redux/reducers/slice";
 import Mcq from "./Mcq/McqQuestion";
+import { v4 as uuidv4 } from "uuid";
 const Footer = () => {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
   const addQuestionInFormBuilder = () => {
-    const id = (questions.length + 1).toString();
+
     const defaultMcqQuestion = {
-      id,
+      id: uuidv4(),
       questionType: "mcq",
     };
     dispatch(addQuestion(defaultMcqQuestion));
