@@ -14,7 +14,7 @@ export const QuestionSetting = (props) => {
   const questions = useSelector((state) => state.questions);
   const addQuestionInFormBuilder = () => {
     const defaultMcqQuestion = {
-      id: uuidv4,
+      id: uuidv4(),
       questionType: "mcq",
     };
     dispatch(addQuestion(defaultMcqQuestion));
