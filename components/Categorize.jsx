@@ -36,7 +36,7 @@ const Categorize = (props) => {
       <div className="text-xs">Categories</div>
 
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId="answers">
+        <Droppable droppableId="categories">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {answers.map(({ id }, index) => {
@@ -75,7 +75,7 @@ const Categorize = (props) => {
         <div className="text-xs">Belongs To</div>
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId="answers">
+        <Droppable droppableId="items">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {answers.map(({ id }, index) => {

@@ -27,20 +27,20 @@ const FormBuilder = () => {
       id,
       questionType,
     };
-   
+
     dispatch(updateQuestion(updatedQuestion));
   };
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="answers">
+      <Droppable droppableId="questions">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {questions.map((question, index) => {
               return (
                 <Draggable
-                  key={`answer-${question.id}`}
-                  draggableId={`answer-${question.id}`}
+                  key={question.id}
+                  draggableId={question.id}
                   index={index}
                 >
                   {(provided) => (

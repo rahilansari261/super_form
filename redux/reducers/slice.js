@@ -40,7 +40,7 @@ const questionSlice = createSlice({
       if (desiredIndex !== -1) {
         const updatedQuestion = { id, questionType };
         if (questionType === "comprehension") {
-          updatedQuestion.mcqs = [{ id: uuidv4() }];
+          updatedQuestion.mcqs = [{ id: uuidv4() }, { id: uuidv4() }];
         }
         state[desiredIndex] = updatedQuestion;
       }

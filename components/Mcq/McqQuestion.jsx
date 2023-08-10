@@ -5,14 +5,20 @@ import McqOptions from "./McqOptions";
 import { QuestionSetting } from "../QuestionSetting";
 
 const Mcq = (props) => {
+  console.log(props);
+
   const borderAroundStyle = `px-4 py-2 rounded border border-gray-300`;
 
   return (
-    <div className={` mb-2 ${props.inComprehension ? borderAroundStyle : ``}`}>
+    <div
+      className={` mb-2 ${props.inComprehension ? borderAroundStyle : ``}`}
+      ref={props.provided.innerRef}
+      {...props.provided.draggableProps}
+    >
       {props.inComprehension && (
         <div>
           <div className="flex ">
-            <div className="p-2">
+            <div className="p-2" {...props.provided.dragHandleProps}>
               <BsGrid className="self-center" />
             </div>
             <div className="text-xs self-center">Question 1.1</div>
