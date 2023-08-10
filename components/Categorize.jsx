@@ -111,13 +111,13 @@ const Categorize = (props) => {
                           <option value="cloze">Cloze</option>
                           <option value="categorize">Categorize</option>
                         </select>
-                        <QuestionSetting question={props.quest} />
                       </div>
                     )}
                   </Draggable>
                 );
               })}
               {provided.placeholder}
+              <QuestionSetting question={props.quest} />
             </div>
           )}
         </Droppable>

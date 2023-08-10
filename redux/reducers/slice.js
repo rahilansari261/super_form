@@ -45,8 +45,8 @@ const questionSlice = createSlice({
     },
 
     deleteQuestion: (state, action) => {
-      const postId = action.payload;
-      return state.filter((post) => post.id !== postId);
+      const questionId = action.payload;
+      return state.filter((question) => question.id !== questionId);
     },
   },
 });
